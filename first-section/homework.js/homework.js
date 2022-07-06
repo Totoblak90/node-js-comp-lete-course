@@ -56,9 +56,7 @@ const userList = (res, users) => {
 
 const createUser = (req, res, users) => {
     const body = [];
-    req.on('data', (chunk) => {
-        body.push(chunk);
-    });
+    req.on('data', (chunk) => body.push(chunk));
     return req.on('end', () => {
         const parsedBody = Buffer.concat(body).toString();
         const username = parsedBody.split("=")[1];
